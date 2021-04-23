@@ -4,7 +4,14 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyApp();
+  }
+}
+
+class _MyApp extends State<MyApp>{
   var switchValue = false;
 
   @override
@@ -21,7 +28,10 @@ class MyApp extends StatelessWidget {
                 child: Switch(
                     value: switchValue,
                     onChanged: (value) {
-                      switchValue = value;
+                      setState(() {
+                        print(value);
+                        switchValue = value;
+                      });
                     }))));
   }
 }
